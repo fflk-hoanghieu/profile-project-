@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#090a11">
+    <title>PROJECT. | Developer Profile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background: #090a11;
+            color: #f5f3ff;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        .top-line {
+            width: 76px;
+            height: 4px;
+            background: #b9a0ff;
+        }
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+        /* HEADER */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(9, 10, 17, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid #222331;
+        }
+        .navbar {
+            max-width: 1100px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .brand-icon {
+            width: 54px;
+            height: 54px;
+            border: 2px solid #9274ed;
+            border-radius: 17px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d6c9ff;
+            font-size: 26px;
+        }
+        .brand-name {
+            font-size: 19px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+        .menu-button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 29px;
+            cursor: pointer;
+        }
+        .menu {
+            display: none;
+            flex-wrap: wrap;
+            gap: 22px;
+            padding: 0 25px 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+        .menu.show {
+            display: flex;
+        }
+        .menu a {
+            color: #a5a5ba;
+        }
+        .menu a:hover {
+            color: #b9a0ff;
+        }
+        /* HERO */
+        .hero {
+            padding-top: 65px;
+            padding-bottom: 35px;
+        }
+        .eyebrow {
+            color: #b9a0ff;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        h1 {
+            font-size: clamp(40px, 8vw, 74px);
+            line-height: 1.15;
+            letter-spacing: -2px;
+            margin: 20px 0;
+        }
+        .purple {
+            color: #b9a0ff;
+        }
+        .description {
+            color: #a3a4b7;
+            font-size: 18px;
+            max-width: 650px;
+            margin-bottom: 30px;
+        }
+        /* BUTTONS */
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin: 30px 0 55px;
+        }
+        .button {
+            min-height: 58px;
+            padding: 16px 23px;
+            border-radius: 15px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            font-size: 15px;
+            font-weight: bold;
+            border: 1px solid #343443;
+            transition: 0.25s;
+        }
+        .button:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.1);
+        }
+        .button-primary {
+            background: #b9a0ff;
+            color: #171122;
+            border-color: transparent;
+        }
+        .button-secondary {
+            background: #10111a;
+            color: #f5f3ff;
+        }
+        /* DISCORD BUTTON */
+        .button-discord {
+            background: #5865f2;
+            color: white;
+            border-color: transparent;
+        }
+        .button-discord:hover {
+            background: #4752c4;
+        }
+        .button-icon {
+            font-size: 21px;
+        }
+        /* INFORMATION */
+        .information {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            margin-bottom: 25px;
+        }
+        .info-label {
+            color: #818398;
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+        .info-value {
+            font-size: 15px;
+        }
+        .online-dot {
+            display: inline-block;
+            width: 9px;
+            height: 9px;
+            background: #77e0b2;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        /* CODE PROFILE */
+        .profile {
+            padding: 35px 0 85px;
+        }
+        .code-window {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #30303e;
+            border-radius: 24px;
+            background: #10121d;
+            box-shadow: 0 20px 70px rgba(0, 0, 0, 0.25);
+        }
+        .window-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 21px;
+            border-bottom: 1px solid #292a38;
+            color: #85879e;
+        }
+        .circle {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+        }
+        .red {
+            background: #f07891;
+        }
+        .yellow {
+            background: #e8c56f;
+        }
+        .green {
+            background: #70d7aa;
+        }
+        .filename {
+            margin-left: 17px;
+            font-size: 14px;
+        }
+        .badge {
+            position: absolute;
+            top: 75px;
+            right: 15px;
+            padding: 13px 16px;
+            border-radius: 17px;
+            background: #191b29;
+            border: 1px solid #343443;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .badge-icon {
+            width: 36px;
+            height: 36px;
+            background: #12b95d;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+        .badge-title {
+            font-size: 13px;
+            font-weight: bold;
+        }
+        .badge-subtitle {
+            color: #9294aa;
+            font-size: 12px;
+        }
+        .code-content {
+            padding: 30px 25px 40px;
+            overflow-x: auto;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 14px;
+            line-height: 2.2;
+        }
+        .code-line {
+            display: flex;
+            white-space: pre;
+        }
+        .line-number {
+            width: 38px;
+            flex-shrink: 0;
+            color: #626780;
+        }
+        .keyword {
+            color: #b9a0ff;
+        }
+        .variable {
+            color: #8eb5ff;
+        }
+        .string {
+            color: #9ad9b8;
+        }
+        .punctuation {
+            color: #dedbed;
+        }
+        .floating-note {
+            position: absolute;
+            bottom: 52px;
+            left: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            border-radius: 15px;
+            border: 1px solid #343443;
+            background: #191b29;
+        }
+        .note-icon {
+            background: #302849;
+            color: #c6b5ff;
+            border-radius: 9px;
+            padding: 5px 10px;
+            font-size: 20px;
+        }
+        .note-title {
+            font-size: 13px;
+            font-weight: bold;
+        }
+        .note-subtitle {
+            font-size: 12px;
+            color: #9294aa;
+        }
+        .window-footer {
+            display: flex;
+            justify-content: space-between;
+            padding: 14px 22px;
+            border-top: 1px solid #292a38;
+            color: #777b95;
+            font-size: 12px;
+        }
+        /* ABOUT */
+        .about {
+            padding-bottom: 85px;
+        }
+        .section-title {
+            font-size: clamp(28px, 5vw, 42px);
+            margin: 12px 0;
+            letter-spacing: -1px;
+        }
+        .section-description {
+            color: #9294aa;
+            max-width: 650px;
+            margin-bottom: 30px;
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 17px;
+        }
+        .card {
+            background: #10121d;
+            border: 1px solid #30303e;
+            border-radius: 18px;
+            padding: 24px;
+            transition: 0.25s;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: #9274ed;
+        }
+        .card-icon {
+            color: #b9a0ff;
+            font-size: 27px;
+        }
+        .card h3 {
+            margin: 12px 0 8px;
+            font-size: 17px;
+        }
+        .card p {
+            color: #9294aa;
+            font-size: 14px;
+        }
+        /* FOOTER */
+        footer {
+            border-top: 1px solid #242432;
+            padding: 25px 0;
+            color: #777b95;
+            font-size: 13px;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        /* MOBILE */
+        @media (max-width: 700px) {
+            .navbar {
+                padding: 16px 20px;
+            }
+            .brand-icon {
+                width: 48px;
+                height: 48px;
+            }
+            .brand-name {
+                font-size: 17px;
+            }
+            .hero {
+                padding-top: 48px;
+            }
+            .description {
+                font-size: 16px;
+            }
+            .buttons {
+                flex-direction: column;
+                margin-bottom: 42px;
+            }
+            .button {
+                width: 100%;
+            }
+            .information {
+                gap: 20px 27px;
+            }
+            .badge {
+                position: relative;
+                top: auto;
+                right: auto;
+                width: fit-content;
+                margin: 15px 15px 0 auto;
+            }
+            .code-content {
+                padding: 25px 15px 35px;
+                font-size: 12px;
+            }
+            .floating-note {
+                bottom: 48px;
+                left: 10px;
+            }
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-line"></div>
+    <!-- HEADER -->
+    <header>
+        <div class="navbar">
+            <a href="#home" class="brand">
+                <div class="brand-icon">H</div>
+                <div class="brand-name">PROJECT.</div>
+            </a>
+            <button
+                class="menu-button"
+                id="menuButton"
+                aria-label="Mở menu"
+                aria-expanded="false">
+                ☰
+            </button>
+        </div>
+        <nav class="menu" id="menu">
+            <a href="#home">Trang chủ</a>
+            <a href="#profile">Hồ sơ</a>
+            <a href="#about">Giới thiệu</a>
+            <a href="#projects">Dự án</a>
+        </nav>
+    </header>
+    <main>
+        <!-- HERO -->
+        <section class="container hero" id="home">
+            <div class="eyebrow">
+                Developer • Việt Nam
+            </div>
+            <h1>
+                Xin chào, mình là
+                <span class="purple">Hiếu.</span>
+            </h1>
+            <p class="description">
+                Mình yêu thích lập trình, công nghệ và xây dựng
+                những sản phẩm số hữu ích. Luôn học hỏi, thử nghiệm
+                và biến ý tưởng thành hiện thực.
+            </p>
+            <div class="buttons">
+                <a href="#projects" class="button button-primary">
+                    Khám phá dự án
+                    <span class="button-icon">↗</span>
+                </a>
+                <a href="#about" class="button button-secondary">
+                    <span class="button-icon">↓</span>
+                    Tìm hiểu về mình
+                </a>
+                <!-- DISCORD INVITE BUTTON -->
+                <a
+                    href="https://bit.ly/discord-projectmodz"
+                    class="button button-discord"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    Truy cập dự án của Hoang Hieu
+                    <span class="button-icon">↗</span>
+                </a>
+            </div>
+            <!-- PERSONAL INFORMATION -->
+            <div class="information">
+                <div>
+                    <div class="info-label">Tên</div>
+                    <div class="info-value">Dương Trọng Hiếu</div>
+                </div>
+                <div>
+                    <div class="info-label">Biệt danh</div>
+                    <div class="info-value">PROJECT</div>
+                </div>
+                <div>
+                    <div class="info-label">Khu vực</div>
+                    <div class="info-value">Việt Nam</div>
+                </div>
+                <div>
+                    <div class="info-label">Trạng thái</div>
+                    <div class="info-value">
+                        <span class="online-dot"></span>
+                        Đang phát triển
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- CODE PROFILE -->
+        <section class="container profile" id="profile">
+            <div class="code-window">
+                <div class="window-header">
+                    <span class="circle red"></span>
+                    <span class="circle yellow"></span>
+                    <span class="circle green"></span>
+                    <span class="filename">project.dev / profile</span>
+                </div>
+                <div class="badge">
+                    <div class="badge-icon">✳</div>
+                    <div>
+                        <div class="badge-title">Luôn học hỏi</div>
+                        <div class="badge-subtitle">Không ngừng cải tiến</div>
+                    </div>
+                </div>
+                <div class="code-content">
+                    <div class="code-line">
+                        <span class="line-number">01</span>
+                        <span>
+                            <span class="keyword">const</span>
+                            <span class="variable">developer</span>
+                            <span class="punctuation"> = {</span>
+                        </span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number"></span>
+                        <span>
+                            &nbsp;&nbsp;name:
+                            <span class="string">'Dương Trọng Hiếu'</span>,
+                        </span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number"></span>
+                        <span>
+                            &nbsp;&nbsp;alias:
+                            <span class="string">'PROJECT'</span>,
+                        </span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number"></span>
+                        <span>
+                            &nbsp;&nbsp;location:
+                            <span class="string">'Việt Nam'</span>,
+                        </span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number"></span>
+                        <span>
+                            &nbsp;&nbsp;focus:
+                            <span class="string">'Web Development & Discord Bots'</span>,
+                        </span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number"></span>
+                        <span>
+                            &nbsp;&nbsp;mindset:
+                            <span class="string">'Build. Learn. Repeat.'</span>
+                        </span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number"></span>
+                        <span class="punctuation">};</span>
+                    </div>
+                    <br>
+                    <div class="code-line">
+                        <span class="line-number">09</span>
+                        <span>
+                            <span class="keyword">function</span>
+                            <span class="variable"> buildSomething</span>()
+                            <span class="punctuation"> {</span>
+                        </span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number"></span>
+                        <span>
+                            &nbsp;&nbsp;<span class="keyword">return</span>
+                            <span class="string">'Ideas into reality'</span>;
+                        </span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number"></span>
+                        <span class="punctuation">}</span>
+                    </div>
+                </div>
+                <div class="floating-note">
+                    <div class="note-icon">⌘</div>
+                    <div>
+                        <div class="note-title">Build in public</div>
+                        <div class="note-subtitle">Ý tưởng thành sản phẩm</div>
+                    </div>
+                </div>
+                <div class="window-footer">
+                    <span>HTML · CSS · JS</span>
+                    <span>UTF-8 · VN</span>
+                </div>
+            </div>
+        </section>
+        <!-- ABOUT -->
+        <section class="container about" id="about">
+            <div class="eyebrow">Một chút về mình</div>
+            <h2 class="section-title">
+                Học hỏi. Xây dựng. Phát triển.
+            </h2>
+            <p class="section-description">
+                Mình đang tìm hiểu thêm về lập trình web,
+                tự động hóa và bot Discord. Mỗi dự án là một
+                cơ hội để học điều mới và cải thiện kỹ năng.
+            </p>
+            <div class="cards" id="projects">
+                <article class="card">
+                    <div class="card-icon">⌘</div>
+                    <h3>Web Development</h3>
+                    <p>
+                        Thiết kế giao diện website hiện đại,
+                        responsive và dễ sử dụng.
+                    </p>
+                </article>
+                <article class="card">
+                    <div class="card-icon">⌁</div>
+                    <h3>Discord Projects</h3>
+                    <p>
+                        Tìm hiểu cách xây dựng bot, lệnh và
+                        tính năng cho máy chủ Discord.
+                    </p>
+                </article>
+                <article class="card">
+                    <div class="card-icon">✦</div>
+                    <h3>Learning & Building</h3>
+                    <p>
+                        Thử nghiệm ý tưởng, học công nghệ mới
+                        và hoàn thiện dự án từng bước.
+                    </p>
+                </article>
+            </div>
+        </section>
+    </main>
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-content">
+            <span>
+                © <span id="year"></span>
+                Dương Trọng Hiếu · PROJECT
+            </span>
+            <span>
+                Built with HTML, CSS & JavaScript.
+            </span>
+        </div>
+    </footer>
+    <script>
+        const menuButton = document.getElementById("menuButton");
+        const menu = document.getElementById("menu");
+        menuButton.addEventListener("click", function () {
+            const isOpen = menu.classList.toggle("show");
+            menuButton.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+            menuButton.textContent = isOpen ? "✕" : "☰";
+        });
+        document.querySelectorAll(".menu a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                menu.classList.remove("show");
+                menuButton.textContent = "☰";
+                menuButton.setAttribute("aria-expanded", "false");
+            });
+        });
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+    </script>
+</body>
+</html>
